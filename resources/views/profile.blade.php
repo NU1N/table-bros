@@ -7,8 +7,8 @@
                 <div class="lg:col-span-4 space-y-6">
                     <form action="/profile/update" method="POST" enctype="multipart/form-data"
                         x-data="{ photoPreview: null }">
-                        <div class="rounded-3xl border bg-gray-800 border-gray-700 overflow-hidden">
-                            <div class="h-24 bg-gradient-to-r from-blue-600 to-purple-600"></div>
+                        <div class="rounded-3xl border bg-secondary border-secondary-light overflow-hidden">
+                            <div class="h-24 bg-gradient-to-r from-primary-light to-primary-dark"></div>
                             <div class="p-6 -mt-12 text-center">
                                 <div class="relative inline-block mb-4">
                                     <img class="w-24 h-24 rounded-full border-4 border-gray-800 shadow-md object-cover"
@@ -47,7 +47,7 @@
                                                 class="border  text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-3 bg-gray-700 border-gray-600 placeholder-gray-400 text-white"
                                                 placeholder="Введите ник" required>
                                         </div>
-                                        <p class="mt-2 text-xs text-gray-500">Этот ник будут видеть другие игроки в
+                                        <p class="mt-2 text-xs text-white">Этот ник будут видеть другие игроки в
                                             списке
                                             участников.
                                         </p>
@@ -64,7 +64,7 @@
                                 </div>
                                 <div class="mt-6 space-y-2">
                                     <button type="submit"
-                                        class="w-full text-white cursor-pointer bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-bold rounded-2xl text-sm px-5 py-4 text-center transition-all">
+                                        class="w-full text-secondary cursor-pointer bg-primary hover:bg-primary-dark focus:ring-4 focus:outline-none focus:ring-blue-300 font-bold rounded-2xl text-sm px-5 py-4 text-center transition-all">
                                         Сохранить изменения
                                     </button>
                                 </div>
@@ -74,22 +74,22 @@
 
                     <!-- Статистика -->
                     <div class="grid grid-cols-2 gap-4">
-                        <div class="p-4 rounded-2xl border bg-gray-800 border-gray-700 shadow-sm">
-                            <p class="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">Партий</p>
-                            <p class="text-2xl font-black text-blue-600">42</p>
+                        <div class="p-4 rounded-2xl border bg-secondary border-secondary-light shadow-sm">
+                            <p class="text-[10px] font-black text-white uppercase tracking-widest mb-1">Партий</p>
+                            <p class="text-2xl font-black text-primary">42</p>
                         </div>
-                        <div class="p-4 rounded-2xl border  bg-gray-800 border-gray-700 shadow-sm">
-                            <p class="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">Часов</p>
-                            <p class="text-2xl font-black text-purple-600">128</p>
+                        <div class="p-4 rounded-2xl border  bg-secondary border-secondary-light shadow-sm">
+                            <p class="text-[10px] font-black text-white uppercase tracking-widest mb-1">Часов</p>
+                            <p class="text-2xl font-black text-primary">128</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Правая колонка: Мои игры (8 колонок) -->
                 <div class="lg:col-span-8 space-y-6">
-                    <div class="rounded-3xl border bg-gray-800 border-gray-700 p-6 lg:p-8">
+                    <div class="rounded-3xl border bg-secondary border-secondary-light p-6 lg:p-8">
                         <div class="flex items-center justify-between mb-8">
-                            <h3 class="text-2xl font-black text-gray-900 text-white uppercase tracking-tighter">Мои
+                            <h3 class="text-2xl font-black text-white text-white uppercase tracking-tighter">Мои
                                 записи</h3>
                         </div>
 
@@ -97,15 +97,15 @@
                         <div class="space-y-4">
                             @forelse(range(1, 4) as $game)
                                 <div
-                                    class="group flex flex-col md:flex-row items-center gap-4 p-4 rounded-2xl border  transition-all border-gray-700 hover:border-blue-600">
+                                    class="group bg-secondary-light flex flex-col md:flex-row items-center gap-4 p-4 rounded-2xl border  transition-all border-secondary-light hover:border-primary-dark">
                                     <img class="w-full md:w-24 h-24 rounded-xl object-cover"
                                         src="{{ asset('default/images/party-preview.png') }}">
                                     <div class="flex-grow text-center md:text-left">
-                                        <h4 class="font-black text-gray-900 text-white uppercase leading-tight mb-1">
+                                        <h4 class="font-black  text-primary uppercase leading-tight mb-1">
                                             Мрачная гавань
                                         </h4>
                                         <div
-                                            class="flex flex-wrap justify-center md:justify-start gap-3 text-xs text-gray-500 font-bold uppercase tracking-wider">
+                                            class="flex flex-wrap justify-center md:justify-start gap-3 text-xs text-white font-bold uppercase tracking-wider">
                                             <span class="flex items-center"><svg class="w-3 h-3 mr-1" fill="none"
                                                     stroke="currentColor" viewBox="0 0 24 24">
                                                     <path
@@ -120,8 +120,7 @@
                                         </div>
                                     </div>
                                     <div class="flex gap-2">
-                                        <a href="/parties/slug"
-                                            class="p-3 text-gray-400 hover:text-blue-600 transition-colors">
+                                        <a href="/parties/slug" class="p-3 text-white hover:text-primary transition-colors">
                                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke-width="2" />
                                                 <path
@@ -129,8 +128,7 @@
                                                     stroke-width="2" />
                                             </svg>
                                         </a>
-                                        <button
-                                            class="p-3 text-gray-400 hover:text-red-600 transition-colors cursor-pointer"
+                                        <button class="p-3 text-white hover:text-red-600 transition-colors cursor-pointer"
                                             title="Отменить запись">
                                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path d="M6 18L18 6M6 6l12 12" stroke-width="2" stroke-linecap="round" />

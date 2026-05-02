@@ -1,6 +1,6 @@
 <a href="/parties/slug">
     <div
-        class="max-w-sm  border  rounded-xl shadow bg-gray-800 border-gray-700 overflow-hidden hover:border-blue-600 transition">
+        class="max-w-sm  border  rounded-xl shadow bg-secondary border-secondary-light overflow-hidden hover:border-primary-dark transition">
 
         <div class="relative h-48 overflow-hidden">
             <img class="w-full h-full object-cover " src="{{ asset('default/images/party-preview.png') }}" />
@@ -40,13 +40,13 @@
 
         <div class="p-5">
             <div class="flex justify-between items-start mb-2">
-                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full uppercase bg-purple-900 text-purple-300">
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full uppercase bg-white text-primary-dark">
                     D&D 5E
                 </span>
             </div>
 
 
-            <h5 class="mb-2 text-xl font-bold tracking-tight text-white uppercase">
+            <h5 class="mb-2 text-xl font-bold tracking-tight text-primary uppercase">
                 Мрачная гавань
             </h5>
 
@@ -55,7 +55,7 @@
                 <span class="font-medium">500 ₽</span>
             </div>
 
-            <p class="mb-3 font-normal text-gray-400 text-sm line-clamp-2">
+            <p class="mb-3 font-normal text-white text-sm line-clamp-2">
                 Огромное кооперативное приключение. Ищем опытных наемников для прохождения кампании.
             </p>
 

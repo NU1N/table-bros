@@ -1,7 +1,7 @@
 <div class="mt-2 pt-2  flex flex-wrap gap-4 justify-between items-center">
 
     <div class="flex items-center gap-4">
-        <span class="text-xs font-black text-gray-400 uppercase">Поделиться:</span>
+        <span class="text-xs font-black text-white uppercase">Поделиться:</span>
         <div class="flex gap-2">
             <button class="p-2 bg-[#0077FF] text-white rounded-lg hover:opacity-90"><svg class="w-4 h-4"
                     fill="currentColor" viewBox="0 0 24 24">

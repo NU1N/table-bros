@@ -1,24 +1,25 @@
 <x-layout title="Лого — Твой проводник в мир настольных игр">
-    <section class="relative overflow-hidden bg-gray-900 pt-16 pb-20 lg:pt-16 lg:pb-40">
+    <section
+        class="relative overflow-hidden bg-[url('http://127.0.0.1:8000/default/images/bg-image.jpg')] bg-cover bg-center pt-16 pb-20 lg:pt-16 lg:pb-40">
         <div class="max-w-screen-xl mx-auto px-4 flex flex-col lg:flex-row items-center gap-12">
             <div class="flex-1 text-center lg:text-left z-10">
                 <span
-                    class="inline-block bg-blue-100 text-blue-700 text-xs font-black uppercase tracking-widest px-4 py-1.5 rounded-full mb-6">
+                    class="inline-block bg-white text-primary-dark text-xs font-black uppercase tracking-widest px-4 py-1.5 rounded-full mb-6">
                     Бросай кубики, а не друзей
                 </span>
                 <h1 class="text-5xl lg:text-7xl font-black text-white uppercase tracking-tighter mb-8">
-                    Найди свою идеальную <span class="text-blue-600">партию</span>
+                    Найди свою идеальную <span class="text-primary">партию</span>
                 </h1>
-                <p class="text-xl text-gray-400 mb-10 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                <p class="text-xl text-white mb-10 leading-relaxed max-w-2xl mx-auto lg:mx-0">
                     Больше никаких долгих переписок в чатах — выбирай игру и приходи побеждать.
                 </p>
                 <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
                     <a href="{{ route('parties') }}"
-                        class="px-8 py-5 bg-blue-600 text-white font-black uppercase tracking-widest rounded-2xl hover:scale-105 transition-transform shadow-xl">
+                        class="px-8 py-5 bg-primary text-secondary font-black uppercase tracking-widest rounded-2xl hover:scale-105 transition-transform shadow-xl">
                         Смотреть расписание
                     </a>
                     <button @click="loginModal = true"
-                        class="px-8 py-5 bg-white border-2 cursor-pointer border-gray-700 text-blue-500 font-black uppercase hover:scale-105  tracking-widest rounded-2xl hover:bg-gray-50 transition-transfor">
+                        class="px-8 py-5 bg-white  cursor-pointer  text-primary-dark font-black uppercase hover:scale-105  tracking-widest rounded-2xl  transition-transfor">
                         Присоединиться
                     </button>
                 </div>
@@ -41,7 +42,7 @@
         </div>
     </section>
 
-    <section class="py-12 bg-gray-700">
+    <section class="py-12 bg-secondary-light">
         <div class="max-w-screen-xl mx-auto px-4">
             <div class="flex items-end mb-8 gap-3">
                 <div>
@@ -49,13 +50,13 @@
                     </h2>
                 </div>
                 <a href="{{ route('parties') }}"
-                    class="sm:block text-sm font-bold text-blue-600 hover:underline uppercase tracking-wider">
+                    class="sm:block text-sm font-bold text-primary hover:underline uppercase tracking-wider">
                     Все расписание →
                 </a>
             </div>
 
             @if(range(1, 3) > 0)
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     @foreach(range(1, 3) as $game)
                         <x-party-card :game="$game" />
                     @endforeach
@@ -73,23 +74,23 @@
     </section>
 
 
-    <section class="py-24 bg-gray-800/30">
+    <section class="py-24 bg-secondary-medium">
         <div class="max-w-screen-xl mx-auto px-4">
 
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
                 <div>
                     <h2 class="text-3xl lg:text-5xl font-black uppercase tracking-tighter text-white mb-4">Жизнь
                         сообщества</h2>
-                    <p class="text-gray-400 max-w-xl">Читайте о новинках нашей игротеки, отчетах с
+                    <p class="text-white max-w-xl">Читайте о новинках нашей игротеки, отчетах с
                         прошедших турниров и полезные советы для новичков.</p>
                 </div>
                 <a href="{{ route('news') }}"
-                    class="sm:block text-sm font-bold text-blue-600 hover:underline uppercase tracking-wider">
+                    class="sm:block text-sm font-bold text-primary hover:underline uppercase tracking-wider">
                     Все новости →
                 </a>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="grid grid-cols-1">
                 @foreach(range(1, 2) as $post)
                     <x-news-card :post="$post" />
                 @endforeach
@@ -99,13 +100,13 @@
     </section>
 
     <!-- Блок Галереи -->
-    <section class="py-24 bg-gray-900 overflow-hidden">
+    <section class="py-24 bg-secondary overflow-hidden">
         <div class="max-w-screen-xl mx-auto px-4">
 
             <div class="text-center mb-16">
                 <h2 class="text-3xl lg:text-5xl font-black uppercase tracking-tighter text-white mb-4">Атмосфера
                     нашего клуба</h2>
-                <div class="h-1.5 w-24 bg-blue-600 mx-auto rounded-full"></div>
+                <div class="h-1.5 w-24 bg-primary mx-auto rounded-full"></div>
             </div>
 
             <!-- Bento Grid Галерея -->
@@ -150,19 +151,19 @@
 
 
     <!-- Блок Гейм-мастеров -->
-    <section class="py-24 bg-gray-800">
+    <section class="py-24 bg-secondary-light">
         <div class="max-w-screen-xl mx-auto px-4">
 
             <div class="flex flex-col md:flex-row items-center justify-between mb-16 gap-4">
                 <div class="text-center md:text-left">
                     <h2 class="text-3xl lg:text-5xl font-black uppercase tracking-tighter text-white mb-4">Наши
                         мастера</h2>
-                    <p class="text-gray-400 max-w-xl">Те, кто знает правила за вас, объяснит нюансы и
+                    <p class="text-white max-w-xl">Те, кто знает правила за вас, объяснит нюансы и
                         сделает каждую партию незабываемой.</p>
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
 
                 <div class="group relative ">
                     <div class="relative overflow-hidden rounded-[2.5rem] aspect-[3/4]">
@@ -170,50 +171,29 @@
                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                             alt="Master">
                         <div class="absolute bottom-4 left-4 right-4">
-                            <div class="bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-xl">
-                                <h4 class="text-lg font-black text-gray-900 uppercase mb-1">Артём</h4>
-                                <p class="text-[10px] font-bold text-purple-600 uppercase tracking-widest mb-2">RPG &
+                            <div class="bg-white backdrop-blur-md p-4 rounded-2xl shadow-xl">
+                                <h4 class="text-lg font-black text-primary-dark uppercase mb-1">Артём</h4>
+                                <p class="text-[12px] font-bold uppercase tracking-widest mb-2">RPG &
                                     Storytelling</p>
-                                <div class="flex gap-1 text-[10px] font-bold text-gray-400">Партий: 150+</div>
+                                <div class="flex gap-1 text-[12px] font-bold ">Партий: 150+</div>
                             </div>
                         </div>
                     </div>
                     <p
-                        class="mt-4 text-sm text-gray-500 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        class="mt-4 text-sm text-white px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         Мастер подземелий. Проведет вас через любые миры D&D и Pathfinder.
                     </p>
                 </div>
-
-                <div class="group relative ">
-                    <div class="relative overflow-hidden rounded-[2.5rem] aspect-[3/4]">
-                        <img src="{{ asset('default/images/party-preview.png') }}"
-                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                            alt="Master">
-                        <div class="absolute bottom-4 left-4 right-4">
-                            <div class="bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-xl">
-                                <h4 class="text-lg font-black text-gray-900 uppercase mb-1">Артём</h4>
-                                <p class="text-[10px] font-bold text-purple-600 uppercase tracking-widest mb-2">RPG &
-                                    Storytelling</p>
-                                <div class="flex gap-1 text-[10px] font-bold text-gray-400">Партий: 150+</div>
-                            </div>
-                        </div>
-                    </div>
-                    <p
-                        class="mt-4 text-sm text-gray-500 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        Мастер подземелий. Проведет вас через любые миры D&D и Pathfinder.
-                    </p>
-                </div>
-
             </div>
         </div>
     </section>
 
-    <section class="py-24 bg-gray-900">
+    <section class="py-24">
         <div class="max-w-screen-xl mx-auto px-4">
             <div class="mb-12 text-center lg:text-left">
                 <h2 class="text-3xl lg:text-5xl font-black uppercase tracking-tighter text-white mb-4">Ждем вас в
                     гости</h2>
-                <p class="text-gray-400">Наш уютный штаб находится в самом сердце города</p>
+                <p class="text-white">Наш уютный штаб находится в самом сердце города</p>
             </div>
 
             <div class="relative h-[450px] rounded-[3rem] overflow-hidden shadow-2xl border border-gray-700">
@@ -223,14 +203,14 @@
                     </h4>
                     <div class="space-y-4">
                         <div class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-blue-600 mt-1" fill="none" stroke="currentColor"
+                            <svg class="w-5 h-5 text-primary-dark mt-1" fill="none" stroke="currentColor"
                                 viewBox="0 0 24 24">
                                 <path
                                     d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
                                     stroke-width="2" />
                                 <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" stroke-width="2" />
                             </svg>
-                            <p class="text-sm font-bold text-gray-600">г. Брянск, тут будет адресс</p>
+                            <p class="text-sm font-bold ">г. Брянск, тут будет адресс</p>
                         </div>
                     </div>
                 </div>

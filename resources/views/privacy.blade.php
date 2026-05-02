@@ -4,10 +4,10 @@
             <h1 class="text-3xl font-black uppercase tracking-tighter mb-2 text-white">
                 Конфиденциальность и правила
             </h1>
-            <p class="text-gray-500">Последнее обновление: {{ date('d.m.Y') }}</p>
+            <p class="text-white">Последнее обновление: {{ date('d.m.Y') }}</p>
         </header>
 
-        <div class="prose prose-invert max-w-none text-gray-400 space-y-6">
+        <div class="prose prose-invert max-w-none text-white space-y-6">
 
             <section>
                 <h3 class="text-xl font-bold text-white uppercase tracking-tight">1. Кто мы такие
@@ -58,12 +58,12 @@
                     Вы имеете право в любой момент изменить свой профиль или отозвать согласие на обработку данных.
                     Для полного удаления вашего аккаунта и всех связанных с ним данных, пожалуйста, напишите нам на
                     почту:
-                    <a href="mailto:[EMAIL АДМИНИСТРАТОРА]" class="text-blue-600 font-bold underline">[EMAIL
+                    <a href="mailto:[EMAIL АДМИНИСТРАТОРА]" class="text-primary font-bold underline">[EMAIL
                         АДМИНИСТРАТОРА]</a>
                 </p>
             </section>
 
-            <div class="mt-12 p-8 bg-gray-800 rounded-3xl borderborder-gray-700">
+            <div class="mt-12 p-8 bg-secondary rounded-3xl border border-secondary-light">
                 <p class="text-sm italic leading-relaxed">
                     Нажимая кнопку «Войти» через социальные сети на любой странице Сервиса, вы даете полное согласие на
                     условия данной политики. Мы оставляем за собой право обновлять этот текст, поэтому заглядывайте сюда
