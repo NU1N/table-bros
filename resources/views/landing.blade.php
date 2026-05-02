@@ -1,6 +1,6 @@
 <x-layout title="Лого — Твой проводник в мир настольных игр">
     <section
-        class="relative overflow-hidden bg-[url('http://127.0.0.1:8000/default/images/bg-image.jpg')] bg-cover bg-center pt-16 pb-20 lg:pt-16 lg:pb-40">
+        class="relative overflow-hidden bg-[url(/default/images/bg-image.jpg)] bg-cover bg-center pt-16 pb-20 lg:pt-16 lg:pb-40">
         <div class="max-w-screen-xl mx-auto px-4 flex flex-col lg:flex-row items-center gap-12">
             <div class="flex-1 text-center lg:text-left z-10">
                 <span
