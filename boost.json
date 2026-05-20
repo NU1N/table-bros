@@ -1,7 +1,5 @@
 {
-    "agents": [
-        "opencode"
-    ],
+    "agents": [],
     "cloud": false,
     "guidelines": true,
     "mcp": true,
