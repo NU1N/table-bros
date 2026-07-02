@@ -11,8 +11,8 @@ use Laravel\Socialite\Facades\Socialite;
 class AuthController extends Controller
 {
     public function __construct(
-        readonly private UserService $userService,
-    ){}
+        private readonly UserService $userService,
+    ) {}
 
     /**
      * Redirect the user to the social provider authentication page.

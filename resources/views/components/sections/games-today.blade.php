@@ -7,24 +7,15 @@
             </div>
             <a href="{{ route('parties') }}"
                 class="sm:block text-sm font-bold text-primary hover:underline uppercase tracking-wider">
-                Все расписание →
+                Всё расписание
+                <x-heroicon-o-arrow-right class="w-5 h-5 inline" />
             </a>
         </div>
 
-        @if(count($games) > 0)
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                @foreach($games as $party)
-                    <x-party-card :party="$party" />
-                @endforeach
-            </div>
-        @else
-            <div class="p-12 text-center border-2 border-dashed border-gray-800 rounded-[2rem]">
-                <p class="text-gray-400 font-medium italic">На сегодня все партии уже набраны или еще не запланированы.
-                    <br> Загляните в полное расписание!
-                </p>
-                <a href="{{ route('parties') }}"
-                    class="inline-block mt-4 text-blue-600 font-bold uppercase text-sm">Перейти к календарю</a>
-            </div>
-        @endif
+        <div class="flex mb-12 space-y-8 space-x-8 flex-wrap">
+            @foreach($games as $party)
+                <x-party-card :party="$party" />
+            @endforeach
+        </div>
     </div>
 </section>

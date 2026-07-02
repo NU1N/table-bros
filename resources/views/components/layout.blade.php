@@ -17,7 +17,7 @@
     <x-footer />
 
 
-    <div x-data="{ 
+    <div x-data="{
         showCookie: false,
         init() {
             if (!localStorage.getItem('cookie_accepted')) {
@@ -64,7 +64,7 @@
     </div>
 
 
-    <div x-data="{ 
+    <div x-data="{
         showButton: false,
         scrollToTop() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -78,10 +78,7 @@
             x-transition:leave-end="opacity-0 translate-y-10 scale-90" @click="scrollToTop"
             class="flex items-center cursor-pointer justify-center w-14 h-14 bg-secondary-medium backdrop-blur-md text-primary border border-secondary-light rounded-full shadow-2xl hover:bg-primary hover:text-white transition-all group"
             aria-label="Наверх" style="display: none;">
-            <svg class="w-6 h-6 group-hover:-translate-y-1 transition-transform" fill="none" stroke="currentColor"
-                viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 15l7-7 7 7"></path>
-            </svg>
+            <x-heroicon-o-chevron-up class="w-8 h-8" />
         </button>
     </div>
 

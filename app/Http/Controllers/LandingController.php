@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Party;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\View\View;
 
 class LandingController extends Controller
@@ -17,58 +19,12 @@ class LandingController extends Controller
         ]);
     }
 
-    private function gamesToday(): array
+    private function gamesToday(): Collection
     {
-        return [
-            [
-                'id' => 1,
-                'title' => 'Мрачная гавань',
-                'slug' => 'gloomy-harbor',
-                'game' => 'D&D 5E',
-                'date' => '26.04.2026',
-                'time' => '19:00',
-                'price' => '500 ₽',
-                'description' => 'Огромное кооперативное приключение. Ищем опытных наемников для прохождения кампании.',
-                'host' => 'DungeonMaster',
-                'hostAvatar' => asset('default/images/avatar.png'),
-                'avatar' => asset('default/images/avatar.png'),
-                'spots' => 4,
-                'maxSpots' => 4,
-                'full' => true,
-            ],
-            [
-                'id' => 2,
-                'title' => 'Кодовое имя: Спринтер',
-                'slug' => 'codename-sprinter',
-                'game' => 'Codenames',
-                'date' => '27.04.2026',
-                'time' => '18:00',
-                'price' => '300 ₽',
-                'description' => 'Классическая командная игра на ассоциации. Отлично подходит для новичков и опытных игроков.',
-                'host' => 'GameMaster',
-                'hostAvatar' => asset('default/images/avatar.png'),
-                'avatar' => asset('default/images/avatar.png'),
-                'spots' => 2,
-                'maxSpots' => 6,
-                'full' => false,
-            ],
-            [
-                'id' => 3,
-                'title' => 'Гвинт: Турнир',
-                'slug' => 'gwent-tournament',
-                'game' => 'Gwent',
-                'date' => '28.04.2026',
-                'time' => '20:00',
-                'price' => '400 ₽',
-                'description' => 'Еженедельный турнир по Гвенту. Принесите свои колоды и сразитесь за призы!',
-                'host' => 'CardKing',
-                'hostAvatar' => asset('default/images/avatar.png'),
-                'avatar' => asset('default/images/avatar.png'),
-                'spots' => 6,
-                'maxSpots' => 8,
-                'full' => false,
-            ],
-        ];
+        return Party::whereDate('datetime', now())
+            ->available()
+            ->orderBy('datetime', 'asc')
+            ->get();
     }
 
     private function communityNews(): array
