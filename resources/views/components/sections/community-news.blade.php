@@ -1,4 +1,4 @@
-<section class="py-12 bg-secondary-light">
+<section class="py-12 bg-secondary-medium">
     <div class="max-w-screen-xl mx-auto px-4">
 
         <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
