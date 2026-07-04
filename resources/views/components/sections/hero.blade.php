@@ -1,5 +1,5 @@
 <section
-    class="relative overflow-hidden bg-[url(/default/images/bg-image.jpg)] bg-cover bg-center pt-16 pb-20 lg:pt-16 lg:pb-40">
+    class="relative overflow-hidden bg-[url(/default/images/bg-image.png)] bg-cover bg-center pt-16 pb-20 lg:pt-30 lg:pb-40">
     <div class="max-w-screen-xl mx-auto px-4 flex flex-col lg:flex-row items-center gap-12">
         <div class="flex-1 text-center lg:text-left z-10">
             <span
@@ -17,25 +17,12 @@
                     class="px-8 py-5 bg-primary text-secondary font-black uppercase tracking-widest rounded-2xl hover:scale-105 transition-transform shadow-xl">
                     Смотреть расписание
                 </a>
-                <button @click="loginModal = true"
-                    class="px-8 py-5 bg-white  cursor-pointer  text-primary-dark font-black uppercase hover:scale-105  tracking-widest rounded-2xl  transition-transfor">
-                    Присоединиться
-                </button>
-            </div>
-        </div>
-
-
-        <div class="flex-1 relative">
-            <div
-                class="relative z-10 rounded-3xl overflow-hidden rotate-2 hover:rotate-0 transition-transform duration-500">
-                <img src="{{ asset('default/images/art.png') }}" alt="Board games">
-            </div>
-
-            <div
-                class="absolute -top-10 -right-10 w-64 h-64 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob">
-            </div>
-            <div
-                class="absolute -bottom-10 -left-10 w-64 h-64 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000">
+                @if(!auth()->id())
+                    <button @click="loginModal = true"
+                        class="px-8 py-5 bg-white  cursor-pointer  text-primary-dark font-black uppercase hover:scale-105  tracking-widest rounded-2xl  transition-transfor">
+                        Присоединиться
+                    </button>
+                @endif
             </div>
         </div>
     </div>

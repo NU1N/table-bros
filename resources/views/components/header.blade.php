@@ -1,5 +1,5 @@
-<nav class="border-b bg-secondary sticky top-0 z-50">
-    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+<nav class="border-b bg-secondary sticky top-0 z-100 ">
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 min-h-24">
 
         <x-logo />
 
@@ -10,13 +10,19 @@
             <li>
                 <a href="{{ route('news') }}" class="hover:text-gray-200">Новости</a>
             </li>
+            @if( auth()->user()?->is_admin )
+                <li>
+                    <a href="{{ route('filament.admin.resources.parties.index') }}" class="hover:text-gray-200">Админка</a>
+                </li>
+            @endif
+
         </ul>
 
         <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
 
             @auth
                 <div class="flex items-center gap-3">
-                    <a href="/profile" class="flex text-sm bg-gray-800 rounded-full hover:bg-gray-700 transition-colors cursor-pointer">
+                    <a href="{{route('profile')}}" class="flex text-sm bg-gray-800 rounded-full hover:bg-gray-700 transition-colors cursor-pointer">
                         <img class="w-11 h-11 rounded-full object-cover"
                             src="{{ auth()->user()?->avatar_url }}"
                             alt="user photo">

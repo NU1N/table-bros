@@ -10,6 +10,7 @@ class ListParties extends ListRecords
 {
     protected static string $resource = PartyResource::class;
 
+
     protected function getHeaderActions(): array
     {
         return [

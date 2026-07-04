@@ -8,5 +8,4 @@
     @endif
     <x-sections.gallery />
     <x-sections.masters />
-    <x-sections.location />
 </x-layout>

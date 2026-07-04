@@ -30,6 +30,7 @@ class PartyResource extends Resource
 
     protected static ?string $label = 'Партия';
 
+
     public static function form(Schema $schema): Schema
     {
         return PartyForm::configure($schema);
