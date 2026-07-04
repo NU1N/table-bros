@@ -5,7 +5,7 @@
     <div class="max-w-screen-xl mx-auto p-4">
 
 
-        <main class="max-w-screen-xl mx-auto p-4 lg:p-8">
+        <main class="max-w-screen-xl mx-auto lg:p-8">
 
             <nav class="mb-8">
                 <a href="{{ route('parties') }}"

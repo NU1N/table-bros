@@ -1,6 +1,6 @@
 <section class="py-12 bg-secondary-light">
     <div class="max-w-screen-xl mx-auto px-4">
-        <div class="flex items-end mb-8 gap-3">
+        <div class="flex flex-wrap items-end mb-8 gap-3">
             <div>
                 <h2 class="text-3xl lg:text-4xl font-black uppercase tracking-tighter text-white">Игры сегодня
                 </h2>

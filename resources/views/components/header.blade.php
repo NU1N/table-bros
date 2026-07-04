@@ -21,7 +21,7 @@
         <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
 
             @auth
-                <div class="flex items-center gap-3">
+                <div class="flex items-center gap-3 mt-3">
                     <a href="{{route('profile')}}" class="flex text-sm bg-gray-800 rounded-full hover:bg-gray-700 transition-colors cursor-pointer">
                         <img class="w-11 h-11 rounded-full object-cover"
                             src="{{ auth()->user()?->avatar_url }}"
