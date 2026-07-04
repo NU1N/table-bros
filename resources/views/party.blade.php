@@ -19,7 +19,7 @@
                 <div class="lg:col-span-2 space-y-8">
                     <div
                         class="rounded-3xl overflow-hidden border bg-secondary bg-cover bg-center border-secondary-light shadow-sm">
-                        <img class="w-full h-64 lg:h-96 object-cover"
+                        <img class="w-full h-48 lg:h-96 object-cover"
                              src="{{ $party->preview_image_url }}" alt="{{ $party->title }}"/>
                         <div class="p-6 lg:p-8 w-full">
                             @if(count($party->tags))
