@@ -2,10 +2,29 @@
 <html class="dark" lang="ru">
 
 <head>
+    @php
+        $title = $title ?? 'Ролевое братство - запись на партии НРИ в Брянске';
+        $description = $description ?? 'Ищете где поиграть в ДНД в Брянске? Настольные ролевые игры (НРИ) для новичков и опытных игроков. Удобное расписание партий.';
+        $keywords = $keywords ?? "нри брянск, настольные ролевые игры брянск, dnd брянск, поиграть в днд брянск, настолки брянск";
+    @endphp
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $title ?? 'BoardGameSync' }}</title>
+    <title>{{ $title }}</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <meta name="description" content="{{ $description }}">
+    <meta name="keywords" content="{{ $keywords }}">
+    <link rel="canonical" href="{{ url()->current() }}">
+
+    <meta name="geo.region" content="RU-BRY">
+    <meta name="geo.placename" content="Брянск">
+
+    <meta property="og:title" content="{{ $title }}">
+    <meta property="og:description" content="{{ $description }}">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:image" content="{{ asset('default/images/bg-image.png') }}">
+    <meta property="og:site_name" content="Ролевое братство">
 </head>
 
 <body class="bg-secondary-medium" x-data="{ loginModal: false }">

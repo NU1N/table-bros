@@ -1,4 +1,4 @@
-<x-layout title="Ролевое братство">
+<x-layout>
     <x-sections.hero />
     @if($partiesToday->isNotEmpty())
         <x-sections.games-today :games="$partiesToday" />
