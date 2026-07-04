@@ -33,19 +33,21 @@ class UserService
 
         if ($user) {
             $user->update([
-                'name' => $socialiteUser->getName(),
                 'email' => $socialiteUser->getEmail(),
             ]);
 
             return $user;
         }
 
-        return User::create([
+        $user = User::create([
             'name' => $socialiteUser->getName(),
             'email' => $socialiteUser->getEmail(),
             'socialite_provider' => $provider,
             'socialite_provider_id' => $socialiteUser->getId(),
             'password' => Str::password(),
         ]);
+        $user->addMediaFromUrl($socialiteUser->getAvatar())->toMediaCollection('avatar');
+
+        return $user;
     }
 }

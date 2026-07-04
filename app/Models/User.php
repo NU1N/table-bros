@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Filament\Models\Contracts\FilamentUser;
+use Filament\Panel;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Casts\Attribute;
@@ -14,7 +16,7 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 
 #[Fillable(['name', 'email', 'password', 'socialite_provider', 'socialite_provider_id', 'is_admin', 'is_master'])]
 #[Hidden(['password', 'remember_token', 'socialite_provider_id'])]
-class User extends Authenticatable implements HasMedia
+class User extends Authenticatable implements HasMedia , FilamentUser
 {
     use HasFactory, Notifiable;
     use InteractsWithMedia;
@@ -27,6 +29,16 @@ class User extends Authenticatable implements HasMedia
             'is_admin' => 'boolean',
             'is_master' => 'boolean',
         ];
+    }
+
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('avatar')->singleFile();
+    }
+
+    public function canAccessPanel(Panel $panel): bool
+    {
+        return $this->is_admin;
     }
 
     public function parties(): BelongsToMany
@@ -42,11 +54,6 @@ class User extends Authenticatable implements HasMedia
     public function registrations(): BelongsToMany
     {
         return $this->parties()->available();
-    }
-
-    public function registerMediaCollections(): void
-    {
-        $this->addMediaCollection('avatar')->singleFile();
     }
 
     public function avatarUrl(): Attribute {

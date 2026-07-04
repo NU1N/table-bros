@@ -81,7 +81,5 @@
             <x-heroicon-o-chevron-up class="w-8 h-8" />
         </button>
     </div>
-
 </body>
-
 </html>

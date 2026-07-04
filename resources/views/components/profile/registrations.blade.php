@@ -35,9 +35,9 @@
 
             </a>
         @empty
-            <div class="text-center py-12 border-2 border-dashed border-gray-100 rounded-2xl">
-                <p class="text-primary italic">Вы еще не записались ни на одну игру</p>
-                <a href="{{route('parties')}}" class="text-primary font-bold uppercase text-xs mt-2 inline-block">Найти
+            <div class="text-center py-12 rounded-2xl">
+                <p class="text-primary">Вы еще не записались ни на одну игру</p>
+                <a href="{{route('parties')}}" class="text-primary font-bold uppercase text-xs mt-2 inline-block underline">Найти
                     партию</a>
             </div>
         @endforelse
