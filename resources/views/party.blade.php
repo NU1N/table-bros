@@ -121,12 +121,13 @@
                                     </form>
                                 @endif
                             @else
-                                <a href="{{ route('auth.redirect', 'yandex') }}"
+
+                                <button @click="loginModal = true"
                                    class="w-full py-4 rounded-2xl font-bold bg-primary text-secondary hover:bg-primary-dark transition-all flex items-center justify-center gap-2 cursor-pointer">
-                                <span class="flex items-center gap-2">
-                                    Войдите для записи
-                                </span>
-                                </a>
+                                    <span class="flex items-center gap-2">
+                                        Войдите для записи
+                                    </span>
+                                </button>
                             @endif
                         @endif
 
