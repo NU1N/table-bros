@@ -21,7 +21,7 @@
                         class="rounded-3xl overflow-hidden border bg-secondary bg-cover bg-center border-secondary-light shadow-sm">
                         <img class="w-full h-64 lg:h-96 object-cover"
                              src="{{ $party->preview_image_url }}" alt="{{ $party->title }}"/>
-                        <div class="p-6 lg:p-8">
+                        <div class="p-6 lg:p-8 w-full">
                             @if(count($party->tags))
                                 <div class="flex flex-wrap gap-2 mb-4">
                                     @foreach($party->tags as $tag)
@@ -36,7 +36,7 @@
                                 {{ $party->title }}
                             </h1>
                             <x-sharing/>
-                            <div class="mt-4 prose dark:prose-invert">
+                            <div class="mt-4 prose dark:prose-invert max-w-[100%]">
                                 {!!
                                     RichContentRenderer::make($party->description)
                                         ->fileAttachmentsDisk('public')
