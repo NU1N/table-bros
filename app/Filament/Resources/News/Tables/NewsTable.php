@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Filament\Resources\Parties\Tables;
+namespace App\Filament\Resources\News\Tables;
 
-use App\Models\Party;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
@@ -10,51 +9,30 @@ use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Filters\Filter;
-use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 
-class PartiesTable
+class NewsTable
 {
     public static function configure(Table $table): Table
     {
         return $table
             ->columns([
-                ImageColumn::make('avatar')
-                    ->disk('public')
-                    ->label(''),
                 TextColumn::make('title')
                     ->label('Название')
                     ->searchable()
-                    ->limit(30)
                     ->weight('bold'),
-                TextColumn::make('datetime')
+                TextColumn::make('created_at')
                     ->label('Время')
                     ->dateTime('d.m.Y H:i')
                     ->sortable(),
-                TextColumn::make('master.name')
-                    ->label('Ведущий'),
                 ToggleColumn::make('is_hidden')
                     ->label('Скрыто'),
-                ToggleColumn::make('is_completed')
-                    ->label('Завершена'),
-                TextColumn::make('participants_count')
-                    ->label('Занято')
-                    ->numeric()
-                    ->counts('participants'),
-                TextColumn::make('spots')
-                    ->label('Всего мест')
-                    ->numeric(),
-                TextColumn::make('spots_remaining')
-                    ->label('Свободных мест'),
             ])
             ->filters([
                 Filter::make('hidden')
                     ->label('Скрытые')
                     ->query(fn (Builder $query) => $query->where('is_hidden', true)),
-                Filter::make('completed')
-                    ->label('Завершена')
-                    ->query(fn (Builder $query) => $query->where('is_completed', true)),
             ])
             ->recordActions([
                 EditAction::make(),
@@ -63,7 +41,6 @@ class PartiesTable
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
                 ]),
-            ])
-            ->defaultSort('datetime', 'desc');
+            ]);
     }
 }

@@ -12,7 +12,7 @@
             </a>
         </div>
 
-        <div class="flex mb-12 space-y-8 space-x-8 flex-wrap">
+        <div class="flex space-y-8 space-x-8 flex-wrap">
             @foreach($games as $party)
                 <x-party-card :party="$party" />
             @endforeach

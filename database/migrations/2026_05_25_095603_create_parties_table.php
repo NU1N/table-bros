@@ -17,11 +17,11 @@ return new class extends Migration
             $table->json('tags')->nullable();
             $table->dateTime('datetime');
             $table->integer('duration');
-            $table->string('address', 255);
+            $table->string('address');
             $table->integer('price');
             $table->integer('spots');
             $table->text('description');
-            $table->string('short_description', 100);
+            $table->string('short_description');
             $table->boolean('is_completed')->default(false);
             $table->boolean('is_hidden')->default(false);
             $table->timestamps();

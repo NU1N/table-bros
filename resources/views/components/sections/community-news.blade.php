@@ -1,4 +1,4 @@
-<section class="py-24 bg-secondary-medium">
+<section class="py-12 bg-secondary-light">
     <div class="max-w-screen-xl mx-auto px-4">
 
         <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
@@ -10,7 +10,8 @@
             </div>
             <a href="{{ route('news') }}"
                 class="sm:block text-sm font-bold text-primary hover:underline uppercase tracking-wider">
-                Все новости →
+                Все новости
+                <x-heroicon-o-arrow-right class="w-5 h-5 inline" />
             </a>
         </div>
 

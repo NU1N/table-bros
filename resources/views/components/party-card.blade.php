@@ -40,15 +40,17 @@
         </div>
 
         <div class="p-5">
-            <div class="flex justify-start items-start mb-2 h-6">
+            <div class="flex justify-start items-start mb-2 h-6 flex-wrap overflow-hidden space-y-3"
+                 title="{{implode(', ', $party->tags)}}">
                 @foreach($party->tags as $tag)
-                    <span class="text-[10px] font-bold px-2 mx-0.5 py-0.5 rounded-full uppercase bg-white text-primary-dark">
+                    <span class="text-[10px] font-bold px-2 mx-0.5 py-0.5 rounded-full uppercase bg-white text-primary-dark text-nowrap">
                     {{ $tag }}
                     </span>
                 @endforeach
             </div>
 
-            <h5 class="mb-2 text-xl font-bold tracking-tight text-primary uppercase">
+            <h5 class="mb-2 h-14 text-xl font-bold tracking-tight text-primary uppercase line-clamp-2"
+                title="{{ $party->title }}">
                 {{ $party->title }}
             </h5>
 
@@ -64,7 +66,8 @@
             <div class="flex items-center text-white mb-2">
                 <span class="font-medium">{{ $party->address }}</span>
             </div>
-            <p class="mb-3 font-normal text-white text-sm line-clamp-2 h-14">
+            <p class="mb-3 font-normal text-white text-sm line-clamp-3 h-16"
+               title="{{ $party->short_description }}">
                 {{ $party->short_description }}
             </p>
 

@@ -14,6 +14,7 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Filters\Filter;
@@ -29,9 +30,13 @@ class UserResource extends Resource
 
     protected static ?string $navigationLabel = 'Пользователи';
 
-    protected static ?int $navigationSort = 0;
+    protected static ?int $navigationSort = 2;
 
     protected static ?string $recordTitleAttribute = 'name';
+
+    protected static ?string $pluralLabel = 'Пользователи';
+
+    protected static ?string $label = 'Пользователь';
 
     public static function form(Schema $schema): Schema
     {
@@ -62,6 +67,9 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
+                ImageColumn::make('avatar')
+                    ->disk('public')
+                    ->label(''),
                 TextColumn::make('name')
                     ->label('Имя')
                     ->searchable()

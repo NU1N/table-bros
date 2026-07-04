@@ -46,14 +46,7 @@ class PartyForm
             TextInput::make('title')
                 ->label('Название')
                 ->required()
-                ->maxLength(255)
-                ->live(onBlur: true)
-                ->afterStateUpdated(fn (Set $set, ?string $state) => self::makeSlug($set, $state)),
-            TextInput::make('slug')
-                ->readOnly()
-                ->required()
-                ->maxLength(255)
-                ->unique(ignoreRecord: true),
+                ->maxLength(255),
             TagsInput::make('tags')
                 ->suggestions(fn ($suggestions) => Party::pluck('tags')->flatten()->unique()->values()->all())
                 ->label('Тэги')
@@ -63,26 +56,6 @@ class PartyForm
             Checkbox::make('is_completed')
                 ->label('Завершена'),
         ];
-    }
-
-    private static function makeSlug(Set $set, ?string $state): void
-    {
-        if (blank($state)) {
-            $set('slug', '');
-
-            return;
-        }
-
-        $originalSlug = Str::slug($state.'-'.time());
-        $slug = $originalSlug;
-        $count = 1;
-
-        while (Party::where('slug', $slug)->exists()) {
-            $slug = "{$originalSlug}-{$count}";
-            $count++;
-        }
-
-        $set('slug', $slug);
     }
 
     private static function participationFields(): array
@@ -136,10 +109,9 @@ class PartyForm
                 ->required(),
             Textarea::make('short_description')
                 ->label('Краткое')
-                ->helperText('Максимум 100 символов')
                 ->rows(3)
                 ->required()
-                ->maxLength(100),
+                ->maxLength(255),
             SpatieMediaLibraryFileUpload::make('preview_image')
                 ->label('Превью')
                 ->image()

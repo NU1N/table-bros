@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\ModelHasPreviewImage;
 use Illuminate\Database\Eloquent\Attributes\Scope;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
@@ -9,6 +10,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Support\Str;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
@@ -16,6 +18,7 @@ class Party extends Model implements HasMedia
 {
     use HasFactory;
     use InteractsWithMedia;
+    use ModelHasPreviewImage;
 
     protected $fillable = [
         'title',
@@ -55,14 +58,6 @@ class Party extends Model implements HasMedia
     public function spotsRemaining(): Attribute {
         return Attribute::make(
             get: fn () => max(0, $this->spots - $this->participants()->count()),
-        );
-    }
-
-    public function previewImageUrl(): Attribute {
-        return Attribute::make(
-            get: fn () => $this->getFirstMediaUrl('preview_image')
-                ? $this->getFirstMediaUrl('preview_image')
-                : asset('default/images/party-preview.png'),
         );
     }
 

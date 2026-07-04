@@ -1,9 +1,11 @@
 <x-layout title="Лого — Твой проводник в мир настольных игр">
     <x-sections.hero />
-    @if($gamesToday->isNotEmpty())
-        <x-sections.games-today :games="$gamesToday" />
+    @if($partiesToday->isNotEmpty())
+        <x-sections.games-today :games="$partiesToday" />
     @endif
-    <x-sections.community-news :news="$communityNews" />
+    @if($news->isNotEmpty())
+        <x-sections.community-news :news="$news" />
+    @endif
     <x-sections.gallery />
     <x-sections.masters />
     <x-sections.location />
