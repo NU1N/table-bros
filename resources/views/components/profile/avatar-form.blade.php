@@ -1,5 +1,6 @@
 <form action="/profile" method="POST" enctype="multipart/form-data"
     x-data="{ photoPreview: null }">
+    @csrf
     <div class="rounded-3xl border bg-secondary border-secondary-light overflow-hidden">
         <div class="h-24 bg-gradient-to-r from-primary-light to-primary-dark"></div>
         <div class="p-6 -mt-12 text-center">
