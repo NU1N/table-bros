@@ -61,6 +61,13 @@ class Party extends Model implements HasMedia
         );
     }
 
+    public function noSpots(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => $this->spots_remaining === 0,
+        );
+    }
+
     #[Scope]
     protected function available(Builder $query): Builder
     {

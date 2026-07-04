@@ -2,72 +2,39 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\UserService;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist;
+use Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig;
 
 class ProfileController extends Controller
 {
-    public function __invoke(): View
+    public function index(Request $request): View
     {
-        $user = $this->user();
-        $stats = $this->stats();
-        $registrations = $this->registrations();
+        $user = $request->user();
+        $user->load(['registrations']);
 
         return view('profile', [
             'user' => $user,
-            'stats' => $stats,
-            'registrations' => $registrations,
+            'stats' => [
+                ['label' => 'Сыграно партий', 'value' => $user->completeParties()->count()],
+                ['label' => 'Часов сыграно', 'value' => $user->completeParties()->sum('duration')],
+            ],
         ]);
     }
 
-    private function user(): array
+    /**
+     * @throws FileDoesNotExist
+     * @throws FileIsTooBig
+     */
+    public function update(Request $request, UserService $userService): RedirectResponse
     {
-        return [
-            'name' => 'Алексей Иванов',
-            'avatar' => asset('default/images/avatar.png'),
-        ];
-    }
+        $request->validate(['name' => 'required', 'avatar' => 'image']);
 
-    private function stats(): array
-    {
-        return [
-            ['label' => 'Сыграно партий', 'value' => 42],
-            ['label' => 'Часов сыграно', 'value' => 128],
-            ['label' => 'Любимый жанр', 'value' => 'Стратегия'],
-            ['label' => 'В клубе', 'value' => '6 мес.'],
-        ];
-    }
+        $userService->updateProfile($request->user(), $request->string('name'), $request->file('avatar'));
 
-    private function registrations(): array
-    {
-        return [
-            [
-                'id' => 1,
-                'title' => 'Мрачная гавань',
-                'date' => '26.04.2026',
-                'time' => '19:00',
-                'status' => 'confirmed',
-            ],
-            [
-                'id' => 2,
-                'title' => 'Кодовое имя: Спринтер',
-                'date' => '27.04.2026',
-                'time' => '18:00',
-                'status' => 'pending',
-            ],
-            [
-                'id' => 3,
-                'title' => 'Гвинт: Турнир',
-                'date' => '28.04.2026',
-                'time' => '20:00',
-                'status' => 'confirmed',
-            ],
-            [
-                'id' => 4,
-                'title' => 'Каркассон: Новые земли',
-                'date' => '02.05.2026',
-                'time' => '17:00',
-                'status' => 'cancelled',
-            ],
-        ];
+        return redirect()->back();
     }
 }

@@ -4,12 +4,8 @@
 <x-layout title="{{ $party->title }}">
     <div class="max-w-screen-xl mx-auto p-4">
 
-        @php
-            $isJoined = auth()->check() && $party->participants()->where('user_id', auth()->id())->exists();
-        @endphp
 
-        <main class="max-w-screen-xl mx-auto p-4 lg:p-8"
-              x-data="{ joined: @json($isJoined), count: {{ $party->participants()->count() }}, max: {{ $party->max_spots }} }">
+        <main class="max-w-screen-xl mx-auto p-4 lg:p-8">
 
             <nav class="mb-8">
                 <a href="{{ route('parties') }}"
@@ -63,7 +59,9 @@
                             </div>
                             <div class="flex items-center text-white">
                                 <x-heroicon-o-clock class="w-5 h-5 mr-3 text-primary" />
-                                <span class="font-medium">{{ $party->datetime->format('H:i') }}</span>
+                                <span class="font-medium">
+                                    {{ $party->datetime->format('H:i') }} - {{ $party->datetime->addHours($party->duration)->format('H:i') }}
+                                </span>
                             </div>
                             <div class="flex items-center text-white">
                                 <x-heroicon-o-credit-card class="w-5 h-5 mr-3 text-primary" />
@@ -83,68 +81,75 @@
                         <div
                             class="flex items-center gap-3 p-3 my-5 border-white/30 rounded-2xl border border-secondary-light bg-secondary-medium backdrop-blur-md">
                             <img class="w-10 h-10 rounded-full object-cover"
-                                 src="{{ $party->host_avatar ?? asset('default/images/avatar.png') }}">
+                                 src="{{ $party->master->avatar_url }}"
+                                 alt="Аватар ведущего">
                             <div>
                                 <p class="text-sm font-bold text-white ">
                                     {{ $party->master->name }}
                                 </p>
-                                <p class="text-[10px] text-primary uppercase font-bold">Ведущий</p>
+                                <p class="text-[10px] text-primary uppercase font-bold">
+                                    @if($party->master_id === auth()->id())
+                                        Ты ведущий
+                                    @else
+                                        Ведущий
+                                    @endif
+                                </p>
                             </div>
 
                         </div>
 
-                        @if(auth()->check())
-                            <form action="{{ route('party.signup', $party) }}" method="POST">
-                                @csrf
-                                <button type="submit"
-                                        :class="joined ? 'bg-red-700 text-white hover:bg-red-800 border-red-200' : 'bg-primary text-secondary hover:bg-primary-dark'"
-                                        class="w-full py-4 rounded-2xl font-bold transition-all flex items-center justify-center gap-2 cursor-pointer">
-
-                                    <template x-if="!joined">
-                                        <span class="flex items-center gap-2">
-                                            Участвовать
-                                        </span>
-                                    </template>
-
-                                    <template x-if="joined">
+                        @if($party->spots_remaining || $isParticipant)
+                            @if(auth()->check())
+                                @if($party->master_id !== auth()->id())
+                                    <form action="{{ route('party.signup', $party) }}" method="POST">
+                                        @csrf
+                                        @if($isParticipant)
+                                            <button type="submit"
+                                                    class="w-full py-4 rounded-2xl font-bold transition-all flex items-center justify-center gap-2 cursor-pointer bg-red-700 text-white hover:bg-red-800 border-red-200">
                                         <span class="flex items-center gap-2">
                                             Отменить запись
                                         </span>
-                                    </template>
-                                </button>
-                            </form>
-                        @else
-                            <a href="{{ route('auth.redirect', 'yandex') }}"
-                               class="w-full py-4 rounded-2xl font-bold bg-primary text-secondary hover:bg-primary-dark transition-all flex items-center justify-center gap-2 cursor-pointer">
+                                            </button>
+                                        @else
+                                            <button type="submit"
+                                                    class="w-full py-4 rounded-2xl font-bold transition-all flex items-center justify-center gap-2 cursor-pointer bg-primary text-secondary hover:bg-primary-dark">
+                                        <span class="flex items-center gap-2">
+                                            Участвовать
+                                        </span>
+                                            </button>
+                                        @endif
+                                    </form>
+                                @endif
+                            @else
+                                <a href="{{ route('auth.redirect', 'yandex') }}"
+                                   class="w-full py-4 rounded-2xl font-bold bg-primary text-secondary hover:bg-primary-dark transition-all flex items-center justify-center gap-2 cursor-pointer">
                                 <span class="flex items-center gap-2">
                                     Войдите для записи
                                 </span>
-                            </a>
+                                </a>
+                            @endif
                         @endif
+
 
                         <h3 class="text-xl font-bold text-white my-3 flex items-center">
                             Участники
-                            <span class="ml-3 text-sm font-medium text-white"
-                                  x-text="count + '/' + max"></span>
+                            <span class="ml-3 text-sm font-medium text-white">
+                                {{ $party->participants->count() }} / {{$party->spots}}
+                            </span>
                         </h3>
                         <div class="grid grid-cols-1 gap-4">
-                            @foreach($party->participants()->take(5)->get() as $participant)
+                            @forelse($party->participants as $participant)
                                 <div class="flex items-center gap-3">
                                     <img class="w-10 h-10 rounded-full object-cover"
-                                         src="{{ $participant->profile_avatar ?? asset('default/images/avatar.png') }}">
+                                         src="{{ $participant->avatar_url }}"
+                                         alt="Аватар {{$participant->name }}">
                                     <p class="text-sm font-medium text-white">{{ $participant->name }}</p>
                                 </div>
-                            @endforeach
-
-                            @if(auth()->check() && $isJoined)
-                                <template x-if="!joined">
-                                    <div class="flex items-center gap-3" x-transition>
-                                        <img class="w-10 h-10 rounded-full object-cover"
-                                             src="{{ asset('default/images/avatar.png') }}">
-                                        <p class="text-sm font-bold text-green-500">Вы идете!</p>
-                                    </div>
-                                </template>
-                            @endif
+                            @empty
+                                <span class="text-sm font-medium text-white">
+                                    Пока нет участников
+                                </span>
+                            @endforelse
                         </div>
                     </div>
 

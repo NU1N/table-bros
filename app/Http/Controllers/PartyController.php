@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Party;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class PartyController extends Controller
@@ -17,10 +18,16 @@ class PartyController extends Controller
         return view('parties', ['parties' => $parties]);
     }
 
-    public function show(string $slug): View
+    public function show(Request $request, string $slug): View
     {
-        $party = Party::where('slug', $slug)->available()->firstOrFail();
+        $party = Party::with(['master', 'participants'])
+            ->where('slug', $slug)
+            ->available()
+            ->firstOrFail();
 
-        return view('party', ['party' => $party]);
+            $isParticipant = $request->user()
+                && $party->participants()->wherePivot('user_id', $request->user()->id)->exists();
+
+        return view('party', ['party' => $party, 'isParticipant' => $isParticipant]);
     }
 }

@@ -4,16 +4,20 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
 #[Fillable(['name', 'email', 'password', 'socialite_provider', 'socialite_provider_id', 'is_admin', 'is_master'])]
 #[Hidden(['password', 'remember_token', 'socialite_provider_id'])]
-class User extends Authenticatable
+class User extends Authenticatable implements HasMedia
 {
     use HasFactory, Notifiable;
+    use InteractsWithMedia;
 
     protected function casts(): array
     {
@@ -28,5 +32,28 @@ class User extends Authenticatable
     public function parties(): BelongsToMany
     {
         return $this->belongsToMany(Party::class, 'user_party');
+    }
+
+    public function completeParties(): BelongsToMany
+    {
+        return $this->parties()->whereIsCompleted(true);
+    }
+
+    public function registrations(): BelongsToMany
+    {
+        return $this->parties()->available();
+    }
+
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('avatar')->singleFile();
+    }
+
+    public function avatarUrl(): Attribute {
+        return Attribute::make(
+            get: fn () => $this->getFirstMediaUrl('avatar')
+                ? $this->getFirstMediaUrl('avatar')
+                : asset('default/images/avatar.png'),
+        );
     }
 }

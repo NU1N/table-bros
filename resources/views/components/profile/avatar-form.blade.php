@@ -1,11 +1,11 @@
-<form action="/profile/update" method="POST" enctype="multipart/form-data"
+<form action="/profile" method="POST" enctype="multipart/form-data"
     x-data="{ photoPreview: null }">
     <div class="rounded-3xl border bg-secondary border-secondary-light overflow-hidden">
         <div class="h-24 bg-gradient-to-r from-primary-light to-primary-dark"></div>
         <div class="p-6 -mt-12 text-center">
             <div class="relative inline-block mb-4">
                 <img class="w-24 h-24 rounded-full border-4 border-gray-800 shadow-md object-cover"
-                    :src="photoPreview ? photoPreview :  '{{ $user['avatar'] }}'">
+                    :src="photoPreview ? photoPreview :  '{{ $user->avatar_url }}'" alt="Аватар">
                 <label
                     class="absolute bottom-0 right-0 p-1.5 bg-white rounded-full border  cursor-pointer  bg-gray-700 border-gray-600 hover:bg-gray-100">
                     <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor"
@@ -28,32 +28,24 @@
 
             <div class="space-y-6 text-left">
                 <div class="mt-3">
-                    <label for="nickname"
-                        class="block mb-2 text-sm font-bold text-white uppercase tracking-wider">Ваш
-                        никнейм</label>
+                    <label for="name"
+                        class="block mb-2 text-sm font-bold text-white uppercase tracking-wider">
+                        Имя
+                    </label>
                     <div class="relative">
                         <div
                             class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none text-gray-400 font-bold">
                             @
                         </div>
-                        <input type="text" id="nickname" name="nickname" value="DungeonMaster"
+                        <input type="text" id="name" name="name" value="{{$user->name}}"
                             class="border  text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-3 bg-gray-700 border-gray-600 placeholder-gray-400 text-white"
                             placeholder="Введите ник" required>
                     </div>
-                    <p class="mt-2 text-xs text-white">Этот ник будут видеть другие игроки в
-                        списке
-                        участников.
+                    <p class="mt-2 text-xs text-white">
+                        Это имя будут видеть другие игроки в списке участников.
                     </p>
                 </div>
 
-                <div class="mt-3">
-                    <label for="bio"
-                        class="block mb-2 text-sm font-bold text-white uppercase tracking-wider">О
-                        себе</label>
-                    <textarea id="bio" name="bio" rows="3"
-                        class="border   text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full p-3 bg-gray-700 border-gray-600 text-white placeholder-gray-400 "
-                        placeholder="Люблю евро-геймы, не люблю кубы..."></textarea>
-                </div>
             </div>
             <div class="mt-6 space-y-2">
                 <button type="submit"

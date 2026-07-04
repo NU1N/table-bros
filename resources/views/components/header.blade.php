@@ -1,4 +1,4 @@
-<nav class="border-b bg-primary sticky top-0 z-50">
+<nav class="border-b bg-secondary sticky top-0 z-50">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
 
         <x-logo />
@@ -18,7 +18,7 @@
                 <div class="flex items-center gap-3">
                     <a href="/profile" class="flex text-sm bg-gray-800 rounded-full hover:bg-gray-700 transition-colors cursor-pointer">
                         <img class="w-11 h-11 rounded-full object-cover"
-                            src="{{ asset('default/images/avatar.png') }}"
+                            src="{{ auth()->user()?->avatar_url }}"
                             alt="user photo">
                     </a>
                     <form method="POST" action="{{ route('logout') }}" class="inline">

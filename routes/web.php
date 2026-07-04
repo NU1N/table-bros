@@ -10,12 +10,23 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', LandingController::class)->name('landing');
 
-Route::get('/parties', [PartyController::class, 'index'])->name('parties');
-Route::get('/parties/{slug}', [PartyController::class, 'show'])->name('party');
-Route::post('/parties/{party}/signup', PartySignupController::class)->name('party.signup');
-Route::get('/news', [NewsController::class, 'index'])->name('news');
-Route::get('/news/{slug}', [NewsController::class, 'show'])->name('news-post');
-Route::get('/profile', ProfileController::class)->name('profile');
+Route::group(['prefix' => 'parties'], function () {
+    Route::get('', [PartyController::class, 'index'])->name('parties');
+    Route::get('{slug}', [PartyController::class, 'show'])->name('party');
+    Route::post('{party}/signup', PartySignupController::class)->name('party.signup');
+});
+
+Route::group(['prefix' => 'news'], function () {
+    Route::get('', [NewsController::class, 'index'])->name('news');
+    Route::get('{slug}', [NewsController::class, 'show'])->name('news-post');
+});
+
+Route::group(['prefix' => 'profile', 'middleware' => 'auth'], function () {
+    Route::get('', [ProfileController::class, 'index'])->name('profile');
+    Route::post('', [ProfileController::class, 'update'])->name('profile.update');
+});
+
+
 Route::get('/privacy', fn () => view('privacy'))->name('privacy');
 
 Route::get('/auth/{provider}/redirect', [AuthController::class, 'redirectToProvider'])->name('auth.redirect');

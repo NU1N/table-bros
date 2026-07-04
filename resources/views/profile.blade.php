@@ -7,7 +7,7 @@
                     <x-profile.stats :stats="$stats" />
                 </div>
                 <div class="lg:col-span-8 space-y-6">
-                    <x-profile.registrations :registrations="$registrations" />
+                    <x-profile.registrations :registrations="$user->registrations" />
                 </div>
             </div>
         </main>

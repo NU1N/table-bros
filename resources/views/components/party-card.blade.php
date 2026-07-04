@@ -9,7 +9,7 @@
                  src="{{ $party->preview_image_url }}"
                  alt="{{ $party->title }}"/>
 
-            @if($party->full)
+            @if($party->no_spots)
                 <div class="absolute inset-0 flex items-center justify-center bg-black/50">
                     <span class="text-white font-bold uppercase px-4 py-2 rounded-lg">
                         Все места заняты
@@ -30,7 +30,7 @@
 
                 <div class="bg-white/20 backdrop-blur-md text-white text-xs font-mono rounded-full border border-white/30 pe-2">
                     <div class="flex items-center gap-2">
-                        <img class="w-8 h-8 rounded-full object-cover" src="{{ $party->avatar ?? asset('default/images/avatar.png') }}">
+                        <img class="w-8 h-8 rounded-full object-cover" src="{{ $party->master->avatar_url }}" alt="Аватар ведущего">
                         <div class="flex flex-col">
                             <span class="text-xs text-white font-semibold">{{ $party->master->name }}</span>
                         </div>
@@ -71,15 +71,22 @@
                 {{ $party->short_description }}
             </p>
 
-            <div class="flex items-center justify-between mt-4">
+            <div class="flex items-center justify-between mt-4 h-6">
                 <div class="flex -space-x-2">
-                    <img class="w-8 h-8 rounded-full object-cover" src="{{ $party->avatar ?? asset('default/images/avatar.png') }}">
-                    <img class="w-8 h-8 rounded-full object-cover" src="{{ $party->avatar ?? asset('default/images/avatar.png') }}">
-                    <div class="w-8 h-8 rounded-full border-2 border-white bg-gray-200 flex items-center justify-center text-[10px] text-gray-500">
-                        +
-                    </div>
+                    @foreach($party->participants->take(5) as $participant)
+                        <img class="w-8 h-8 rounded-full object-cover"
+                             src="{{ $participant->avatar_url }}"
+                             alt="Аватар {{ $participant->name }}">
+                    @endforeach
+                    @if(max($party->participants->count() - 5, 0))
+                       <div class="w-8 h-8 rounded-full border-2 border-white bg-gray-200 flex items-center justify-center text-[10px] text-gray-500">
+                                +{{ $party->participants->count() - 5 }}
+                       </div>
+                    @endif
                 </div>
-                <span class="text-sm font-medium text-white">свободно {{ $party->spots }} из {{ $party->spots }} мест</span>
+                @if($party->spots_remaining)
+                    <span class="text-sm font-medium text-white">свободно {{ $party->spots_remaining }} из {{ $party->spots }} мест</span>
+                @endif
             </div>
         </div>
     </div>
