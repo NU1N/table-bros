@@ -1,5 +1,5 @@
 <x-layout title="Расписание игр">
-    <div class="max-w-screen-xl mx-auto p-4">
+    <div class="max-w-screen-xl mx-auto p-2">
         <div class="space-y-8">
                 @forelse($parties->groupBy(fn ($party) => $party->datetime->format('d.m.Y')) as $datetime => $dayParties)
                     <section>
@@ -8,7 +8,7 @@
                             {{ $datetime }}
                         </h3>
 
-                        <div class="flex mb-12 space-y-8 space-x-8 flex-wrap">
+                        <div class="flex mb-12 space-y-8 md:space-x-8 flex-wrap">
                             @foreach($dayParties as $party)
                                 <x-party-card :party="$party" />
                             @endforeach

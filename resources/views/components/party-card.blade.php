@@ -1,8 +1,8 @@
 @props(['party'])
 
-<a href="{{ route('party', $party->slug) }}">
+<a href="{{ route('party', $party->slug) }}" class="w-full md:w-xs">
     <div
-        class="w-sm border rounded-xl shadow bg-secondary border-secondary-light overflow-hidden hover:border-primary-dark transition">
+        class="border rounded-xl shadow bg-secondary border-secondary-light overflow-hidden hover:border-primary-dark transition">
 
         <div class="relative h-48 overflow-hidden">
             <img class="w-full h-full object-cover"
