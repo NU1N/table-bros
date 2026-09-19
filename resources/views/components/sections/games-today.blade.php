@@ -1,4 +1,4 @@
-<section class="py-12 bg-secondary-light">
+<section class="py-12 bg-primary">
     <div class="max-w-screen-xl mx-auto px-2">
         <div class="flex flex-wrap items-end mb-8 gap-3">
             <div>

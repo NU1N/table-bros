@@ -1,4 +1,4 @@
-<footer class="border-t  bg-secondary border-secondary-light mt-20">
+<footer class="border-t  bg-secondary border-secondary-light">
     <div class="max-w-screen-xl mx-auto p-8 md:py-10">
         <div class="flex flex-col md:flex-row justify-between items-center gap-8">
 

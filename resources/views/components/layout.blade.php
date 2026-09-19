@@ -27,7 +27,7 @@
     <meta property="og:site_name" content="Ролевое братство">
 </head>
 
-<body class="bg-secondary-medium" x-data="{ loginModal: false }">
+<body class="bg-primary" x-data="{ loginModal: false }">
     <x-header />
 
     <main>

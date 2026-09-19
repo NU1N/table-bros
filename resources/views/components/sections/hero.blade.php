@@ -1,5 +1,5 @@
 <section
-    class="relative overflow-hidden bg-[url(/default/images/bg-image.png)] bg-cover bg-center pt-16 pb-20 lg:pt-30 lg:pb-40">
+    class="relative overflow-hidden bg-[url(/default/images/bg-image.png)] bg-cover bg-center pt-16 pb-20 lg:pt-30 lg:pb-40 bg-black">
     <div class="max-w-screen-xl mx-auto px-4 flex flex-col lg:flex-row items-center gap-12">
         <div class="flex-1 text-center lg:text-left z-10">
             <span
