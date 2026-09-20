@@ -58,7 +58,7 @@
                     Вы имеете право в любой момент изменить свой профиль или отозвать согласие на обработку данных.
                     Для полного удаления вашего аккаунта и всех связанных с ним данных, пожалуйста, напишите нам на
                     почту:
-                    <a href="mailto:ROLEVOEPLAY@yandex.ru" class="text-primary font-bold underline">ROLEVOEPLAY@yandex.ru</a>
+                    <a href="mailto:ROLEVOEPLAY@yandex.ru" class="text-white font-bold underline">ROLEVOEPLAY@yandex.ru</a>
                 </p>
             </section>
 

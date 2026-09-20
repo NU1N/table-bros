@@ -24,7 +24,7 @@
                             class="hover:text-primary transition-colors">Конфиденциальность</a>
                     </li>
                     <li>
-                        <a href="mailto:[EMAIL АДМИНИСТРАТОРА]"
+                        <a href="mailto:ROLEVOEPLAY@yandex.ru"
                             class="hover:text-primary-dark transition-colors text-primary">Поддержка</a>
                     </li>
                 </ul>
