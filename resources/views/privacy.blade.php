@@ -13,9 +13,9 @@
                 <h3 class="text-xl font-bold text-white uppercase tracking-tight">1. Кто мы такие
                 </h3>
                 <p>
-                    Сервис <strong>[НАЗВАНИЕ СЕРВИСА]</strong> (далее — «Сервис») — это площадка для
+                    Сервис <strong>Ролевое Содружество</strong> (далее — «Сервис») — это площадка для
                     организации игровых партий.
-                    Владельцем и оператором данных является <strong>[ФИО ВЛАДЕЛЬЦА ИЛИ НАЗВАНИЕ ОРГАНИЗАЦИИ]</strong>.
+                    Владельцем и оператором данных является <strong>Гоев Артём Анатольевич</strong>.
                 </p>
             </section>
 
@@ -58,8 +58,7 @@
                     Вы имеете право в любой момент изменить свой профиль или отозвать согласие на обработку данных.
                     Для полного удаления вашего аккаунта и всех связанных с ним данных, пожалуйста, напишите нам на
                     почту:
-                    <a href="mailto:[EMAIL АДМИНИСТРАТОРА]" class="text-primary font-bold underline">[EMAIL
-                        АДМИНИСТРАТОРА]</a>
+                    <a href="mailto:ROLEVOEPLAY@yandex.ru" class="text-primary font-bold underline">ROLEVOEPLAY@yandex.ru</a>
                 </p>
             </section>
 

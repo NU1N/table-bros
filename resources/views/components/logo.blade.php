@@ -2,5 +2,5 @@
     <div class="w-16 h-16">
         <img src="{{asset('default/images/logo.png')}}" alt="Лого">
     </div>
-    <span class="text-xl font-black uppercase tracking-tighter text-white">Ролевое братство</span>
+    <span class="text-xl font-black uppercase tracking-tighter text-white">Ролевое Содружество</span>
 </a>
